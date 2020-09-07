@@ -7,7 +7,7 @@
 <!-- default file list end -->
 # How to sort a ListView in code
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e1276)**
+**[[Run Online]](https://codecentral.devexpress.com/e1276/)**
 <!-- run online end -->
 
 
