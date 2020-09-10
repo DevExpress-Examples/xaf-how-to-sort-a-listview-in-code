@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports DevExpress.Xpo
 Imports DevExpress.Data
 Imports DevExpress.Xpo.DB
@@ -12,6 +11,7 @@ Imports DevExpress.Persistent.BaseImpl
 Namespace WinWebSolution.Module
 	Public MustInherit Class SortListViewControllerBase
 		Inherits ViewController(Of ListView)
+
 		Public Sub New()
 			TargetObjectType = GetType(Issue)
 		End Sub
@@ -21,14 +21,14 @@ Namespace WinWebSolution.Module
 			Dim demoFlag As Boolean = True
 			'Dennis: This code applies a client side sorting.
 			If demoFlag Then
-				Dim columnInfo As IModelColumn = (CType(View.Model.Columns, IModelList(Of IModelColumn)))(propertyName)
+				Dim columnInfo As IModelColumn = DirectCast(View.Model.Columns, IModelList(Of IModelColumn))(propertyName)
 				If columnInfo IsNot Nothing Then
 					columnInfo.SortIndex = 0
 					columnInfo.SortOrder = ColumnSortOrder.Descending
 				End If
 			Else
 				'Dennis: This code is used for the server side sorting.
-				If (CType(View.Model.Sorting, IModelList(Of IModelSortProperty)))(propertyName) Is Nothing Then
+				If DirectCast(View.Model.Sorting, IModelList(Of IModelSortProperty))(propertyName) Is Nothing Then
 					Dim sortProperty As IModelSortProperty = View.Model.Sorting.AddNode(Of IModelSortProperty)(propertyName)
 					sortProperty.Direction = SortingDirection.Descending
 					sortProperty.PropertyName = propertyName
@@ -36,15 +36,18 @@ Namespace WinWebSolution.Module
 			End If
 		End Sub
 	End Class
-	<DefaultClassOptions> _
+	<DefaultClassOptions>
 	Public Class Issue
 		Inherits BaseObject
+
 		Public Sub New(ByVal session As Session)
 			MyBase.New(session)
 		End Sub
-		<Persistent("ModifiedOn"), ValueConverter(GetType(UtcDateTimeConverter))> _
+		<Persistent("ModifiedOn"), ValueConverter(GetType(UtcDateTimeConverter))>
 		Protected _ModifiedOn As DateTime = DateTime.Now
-		<PersistentAlias("_ModifiedOn"), ModelDefault("EditMask", "G"), ModelDefault("DisplayFormat", "{0:G}")> _
+		<PersistentAlias("_ModifiedOn")>
+		<ModelDefault("EditMask", "G")>
+		<ModelDefault("DisplayFormat", "{0:G}")>
 		Public ReadOnly Property ModifiedOn() As DateTime
 			Get
 				Return _ModifiedOn

@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Web
 Imports System.Configuration
 Imports DevExpress.ExpressApp.Web
@@ -7,6 +6,7 @@ Imports DevExpress.ExpressApp.Web
 Namespace WinWebSolution.Web
 	Public Class [Global]
 		Inherits System.Web.HttpApplication
+
 		Public Sub New()
 			InitializeComponent()
 		End Sub
@@ -35,7 +35,7 @@ Namespace WinWebSolution.Web
 		End Sub
 		Protected Sub Application_BeginRequest(ByVal sender As Object, ByVal e As EventArgs)
 			Dim filePath As String = HttpContext.Current.Request.PhysicalPath
-			If (Not String.IsNullOrEmpty(filePath)) AndAlso (filePath.IndexOf("Images") >= 0) AndAlso (Not System.IO.File.Exists(filePath)) Then
+			If Not String.IsNullOrEmpty(filePath) AndAlso (filePath.IndexOf("Images") >= 0) AndAlso Not System.IO.File.Exists(filePath) Then
 				HttpContext.Current.Response.End()
 			End If
 		End Sub

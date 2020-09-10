@@ -1,6 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
-Namespace WinWebSolution.Module.Win
+﻿Namespace WinWebSolution.Module.Win
 	Partial Public Class WinWebSolutionWindowsFormsModule
 		''' <summary> 
 		''' Required designer variable.

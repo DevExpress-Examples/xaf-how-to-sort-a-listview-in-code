@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.ComponentModel
 Imports System.Collections.Generic
 Imports System.Diagnostics
@@ -12,6 +11,7 @@ Imports DevExpress.ExpressApp.Win.Editors
 Namespace WinWebSolution.Module.Win
 	Public Class WinSortListViewController
 		Inherits SortListViewControllerBase
+
 		Protected Overrides Sub OnViewControlsCreated()
 			MyBase.OnViewControlsCreated()
 			Dim gridListEditor As GridListEditor = TryCast(View.Editor, GridListEditor)

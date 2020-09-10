@@ -1,6 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
-Namespace WinWebSolution.Module.Web
+﻿Namespace WinWebSolution.Module.Web
 	Partial Public Class WinWebSolutionAspNetModule
 		''' <summary> 
 		''' Required designer variable.

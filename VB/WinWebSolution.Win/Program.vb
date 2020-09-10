@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Configuration
 Imports System.Windows.Forms
 
@@ -11,14 +10,12 @@ Imports DevExpress.Persistent.BaseImpl
 Imports WinWebSolution.Module
 
 Namespace WinWebSolution.Win
-	Friend NotInheritable Class Program
+	Friend Module Program
 		''' <summary>
 		''' The main entry point for the application.
 		''' </summary>
-		Private Sub New()
-		End Sub
-		<STAThread> _
-		Shared Sub Main()
+		<STAThread>
+		Sub Main()
 #If EASYTEST Then
 			DevExpress.ExpressApp.Win.EasyTest.EasyTestRemotingRegistration.Register()
 #End If
@@ -45,5 +42,5 @@ Namespace WinWebSolution.Win
 				winApplication.HandleException(e)
 			End Try
 		End Sub
-	End Class
+	End Module
 End Namespace

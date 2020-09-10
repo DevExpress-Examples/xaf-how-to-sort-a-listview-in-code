@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Data
 Imports DevExpress.Xpo.DB
 
@@ -19,7 +18,8 @@ Namespace Demo
 			fdataSet = New DataSet()
 			DataStoreBase.RegisterDataStoreProvider(providerKey, AddressOf CreateProviderFromString)
 		End Sub
-		Public Shared Function CreateProviderFromString(ByVal connectionString As String, ByVal autoCreateOption As AutoCreateOption, <System.Runtime.InteropServices.Out()> ByRef objectsToDisposeOnDisconnect() As IDisposable) As IDataStore
+'INSTANT VB NOTE: The variable connectionString was renamed since Visual Basic does not handle local variables named the same as class members well:
+		Public Shared Function CreateProviderFromString(ByVal connectionString_Conflict As String, ByVal autoCreateOption As AutoCreateOption, <System.Runtime.InteropServices.Out()> ByRef objectsToDisposeOnDisconnect() As IDisposable) As IDataStore
 			objectsToDisposeOnDisconnect = New IDisposable() { }
 			Return New DataSetDataStore(fdataSet, autoCreateOption)
 		End Function

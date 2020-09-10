@@ -1,6 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
-Namespace WinWebSolution.Win
+﻿Namespace WinWebSolution.Win
 	Partial Public Class WinWebSolutionWindowsFormsApplication
 		''' <summary> 
 		''' Required designer variable.
@@ -37,7 +35,7 @@ Namespace WinWebSolution.Win
 			Me.securitySimple1 = New DevExpress.ExpressApp.Security.SecuritySimple()
 			Me.authenticationActiveDirectory1 = New DevExpress.ExpressApp.Security.AuthenticationActiveDirectory()
 			Me.sqlConnection1 = New System.Data.SqlClient.SqlConnection()
-			CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
+			DirectCast(Me, System.ComponentModel.ISupportInitialize).BeginInit()
 			' 
 			' securitySimple1
 			' 
@@ -67,8 +65,9 @@ Namespace WinWebSolution.Win
 			Me.Modules.Add(Me.module7)
 			Me.Modules.Add(Me.securityModule1)
 			Me.Security = Me.securitySimple1
-'			Me.DatabaseVersionMismatch += New System.EventHandler(Of DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs)(Me.WinWebSolutionWindowsFormsApplication_DatabaseVersionMismatch);
-			CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.WinWebSolutionWindowsFormsApplication_DatabaseVersionMismatch);
+			DirectCast(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
 		End Sub
 

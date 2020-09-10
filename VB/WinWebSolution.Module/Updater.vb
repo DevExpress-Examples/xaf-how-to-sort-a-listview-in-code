@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports DevExpress.Xpo
 Imports DevExpress.ExpressApp.Updating
 Imports DevExpress.ExpressApp
@@ -7,6 +6,7 @@ Imports DevExpress.ExpressApp
 Namespace WinWebSolution.Module
 	Public Class Updater
 		Inherits ModuleUpdater
+
 		Public Sub New(ByVal os As IObjectSpace, ByVal currentDBVersion As Version)
 			MyBase.New(os, currentDBVersion)
 		End Sub
