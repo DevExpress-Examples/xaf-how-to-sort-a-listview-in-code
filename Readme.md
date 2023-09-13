@@ -15,8 +15,8 @@ Scenario:
 You need to sort a list view by a class property and disallow end-users from changing this sorting themselves.
 
 Solution:
-Implement a ViewController and configure sorting for the required column of this ListView in the application model. This is done in the SortListViewControllerBase class, which is platform-agnostic.<br />
-After that, we should implement platform-dependant controllers that will disable the sorting functionality in the grid. 
+Implement a ViewController and configure the sorting operation for this ListView's required column in the application model. You can do this in the SortListViewControllerBase class that is platform-agnostic.
+After that, implement platform-dependent controllers that disable the sorting functionality in the grid. 
 
 This approach can be used to sort both nested and root ListViews, and also will work if the server mode is enabled in the ListView.</p><p><strong>See Also:</strong><br />
 <a href="https://www.devexpress.com/Support/Center/p/E1253">How to sort a nested ListView at the business objects level, in code</a><br />
