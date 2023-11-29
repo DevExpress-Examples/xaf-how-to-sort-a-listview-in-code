@@ -8,6 +8,7 @@
 # How to sort a ListView in code
 
 This example shows how to sort a list view by a class property and disallow end-users from changing this sorting themselves.
+![image](https://github.com/DevExpress-Examples/XAF_how-to-sort-a-listview-in-code-e1276/assets/14300209/5b0a91c3-3b8e-4b02-b5aa-62a6b6a25314)
 
 ## Implementation Details
 Create a base plaform-agnostic ViewController and sort the required columns in the [Application Model](https://docs.devexpress.com/eXpressAppFramework/112579/ui-construction/application-model-ui-settings-storage) in it. After that, implement its platform-dependent descendants that disable the sorting functionality in the underlying grid controls. 
