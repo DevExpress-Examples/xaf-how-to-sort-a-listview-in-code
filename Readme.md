@@ -4,13 +4,17 @@
 <!-- default badges end -->
 
 
-# How to sort a ListView in code
+# XAF - How to sort a ListView in code
 
-This example shows how to sort a list view by a class property and disallow end-users from changing this sorting themselves.
-![image](https://github.com/DevExpress-Examples/XAF_how-to-sort-a-listview-in-code-e1276/assets/14300209/5b0a91c3-3b8e-4b02-b5aa-62a6b6a25314)
+This example shows how to sort a ListView by a class property and prevent users from changing this sorting themselves.
+
+<kbd>![image](https://github.com/DevExpress-Examples/XAF_how-to-sort-a-listview-in-code-e1276/assets/14300209/5b0a91c3-3b8e-4b02-b5aa-62a6b6a25314)</kbd>
 
 ## Implementation Details
-Create a base plaform-agnostic ViewController and sort the required columns in the [Application Model](https://docs.devexpress.com/eXpressAppFramework/112579/ui-construction/application-model-ui-settings-storage) in it. After that, implement its platform-dependent descendants that disable the sorting functionality in the underlying grid controls. 
+
+1. Create a base plaform-agnostic `ViewController`.
+2. Within it, sort required columns in the [Application Model](https://docs.devexpress.com/eXpressAppFramework/112579/ui-construction/application-model-ui-settings-storage).
+3. Implement its platform-dependent descendants that disable the sorting functionality in underlying grid controls. 
 
 This approach can be used to sort both nested and root ListViews, and also will work if the server mode is enabled in the ListView.
 
