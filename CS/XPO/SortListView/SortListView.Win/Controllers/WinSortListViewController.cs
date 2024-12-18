@@ -1,18 +1,11 @@
-using System;
-using System.ComponentModel;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.Actions;
-using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.Win.Editors;
+using SortListView.Module;
 
-namespace WinWebSolution.Module.Win {
+namespace SortListView.Win.Controllers {
     public class WinSortListViewController : SortListViewControllerBase {
         protected override void OnViewControlsCreated() {
             base.OnViewControlsCreated();
-            if (View.Editor is GridListEditor gridListEditor) {
+            if(View.Editor is GridListEditor gridListEditor) {
                 gridListEditor.GridView.OptionsCustomization.AllowSort = false;
             }
         }
