@@ -1,15 +1,11 @@
-using System;
 using DevExpress.Data;
-using DevExpress.Xpo.DB;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Model;
+using DevExpress.Xpo.DB;
 using SortListView.Module.BusinessObjects;
 
-namespace WinWebSolution.Module {
-    public abstract class SortListViewControllerBase :ViewController<ListView> {
-        public SortListViewControllerBase() {
-            TargetObjectType = typeof(Issue);
-        }
+namespace SortListView.Module {
+    public abstract class SortListViewControllerBase : ObjectViewController<ListView, Issue> {
         protected override void OnActivated() {
             base.OnActivated();
             string propertyName = nameof(Issue.ModifiedOn);
