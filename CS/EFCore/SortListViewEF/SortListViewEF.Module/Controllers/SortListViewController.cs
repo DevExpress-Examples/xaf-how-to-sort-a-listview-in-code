@@ -11,7 +11,7 @@ namespace SortListViewEF.Module {
             base.OnActivated();
             string propertyName = nameof(Issue.ModifiedOn);
             bool demoFlag = true;
-            //Dennis: This code applies a client side sorting.
+            // This code applies a client side sorting.
             if(demoFlag) {
                 IModelColumn columnInfo = View.Model.Columns[propertyName];
                 if(columnInfo != null) {
@@ -19,7 +19,7 @@ namespace SortListViewEF.Module {
                     columnInfo.SortOrder = ColumnSortOrder.Descending;
                 }
             } else {
-                //Dennis: This code is used for the server side sorting.
+                // This code is used for the server side sorting.
                 if(View.Model.Sorting[propertyName] == null) {
                     IModelSortProperty sortProperty = View.Model.Sorting.AddNode<IModelSortProperty>(propertyName);
                     sortProperty.Direction = SortingDirection.Descending;
