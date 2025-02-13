@@ -25,7 +25,7 @@ namespace SortListView.Module.BusinessObjects {
         }
         protected override void OnChanged(string propertyName, object oldValue, object newValue) {
             base.OnChanged(propertyName, oldValue, newValue);
-            if (propertyName == "Subject" || propertyName == "Description") {
+            if (propertyName == nameof(Subject) || propertyName == nameof(Description)) {
                 UpdateModifiedOn();
             }
         }
