@@ -12,7 +12,7 @@ This example sorts list view data by a class property and prevents users from mo
 
 ## Implementation Details
 
-1. Create a view controller in the application model. Configure sorting settings for the list view's column.
+1. Create a view controller in the application model and configure sorting settings for the list view's column:
 
     _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
     ```cs
@@ -38,7 +38,7 @@ This example sorts list view data by a class property and prevents users from mo
     }
     ```
 
-2. Implement platform-dependent controllers that disable the sorting functionality in underlying grid controls. 
+2. Implement platform-dependent controllers that disable the sorting functionality in underlying grid controls:
 
     _File to review:_ [BlazorSortRootListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortRootListViewController.cs) 
     ```cs
@@ -63,7 +63,7 @@ This example sorts list view data by a class property and prevents users from mo
     }
     ```
 
-This approach allows you to sort both nested and root list views, and will work if the server mode is enabled in the list view.
+This approach allows you to sort both nested and root list views, and works if server mode is enabled in the list view.
 
 ## Documentation 
 
