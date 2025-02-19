@@ -1,14 +1,12 @@
-﻿using DevExpress.Xpo;
-using DevExpress.Xpo.Metadata;
+﻿using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
-using DevExpress.ExpressApp.Model;
-using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.EF;
+using System.ComponentModel;
 
 namespace SortListView.Module.BusinessObjects {
     [DefaultClassOptions]
     public class Issue : BaseObject {
-        protected DateTime _ModifiedOn = DateTime.Now;
+
         [ModelDefault("EditMask", "G")]
         [ModelDefault("DisplayFormat", "{0:G}")]
         public DateTime ModifiedOn {
@@ -20,7 +18,15 @@ namespace SortListView.Module.BusinessObjects {
         internal virtual void UpdateModifiedOn(DateTime date) {
             _ModifiedOn = date;
         }
+        protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            base.OnPropertyChanged(sender, e);
+            if (e.PropertyName == nameof(Subject) || e.PropertyName == nameof(Description)) {
+                UpdateModifiedOn();
+            }
+        }
         public virtual string Subject { get; set; }
         public virtual string Description { get; set; }
+        [HideInUI(HideInUI.All)]
+        public virtual DateTime _ModifiedOn { get; set; } = DateTime.Now;
     }
 }
