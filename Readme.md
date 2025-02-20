@@ -41,7 +41,7 @@ This example sorts list view data by a class property and prevents users from mo
 
 2. Implement platform-dependent controllers that disable the sorting functionality in underlying grid controls:
 
-    _File to review:_ [BlazorSortRootListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortRootListViewController.cs) 
+    _File to review:_ [BlazorSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortListViewController.cs) 
     ```cs
     protected override void OnViewControlsCreated() {
         base.OnViewControlsCreated();
@@ -75,7 +75,7 @@ This approach allows you to sort both nested and root list views, and works if s
 ## Files to Review
 
 - [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs)
-- [BlazorSortRootListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortRootListViewController.cs) 
+- [BlazorSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortListViewController.cs) 
 - [WinSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Win/Controllers/WinSortListViewController.cs) 
 
 
