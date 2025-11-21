@@ -6,7 +6,7 @@ using DevExpress.Xpo.DB;
 using SortListView.Module.BusinessObjects;
 
 namespace SortListView.Module {
-    public abstract class SortListViewControllerBase : ObjectViewController<ListView, Issue> {
+    public class SortListViewController : ObjectViewController<ListView, Issue> {
         
         string propertyName = nameof(Issue.ModifiedOn);
         bool demoFlag = true;
@@ -30,7 +30,7 @@ namespace SortListView.Module {
             {
                 foreach (var columnWrapper in listEditor.Columns)
                 {
-                    columnWrapper.AllowSortingChange = true;
+                    columnWrapper.AllowSortingChange = false;
                     // This code applies a client side sorting.
                     if (demoFlag && columnWrapper.PropertyName == propertyName)
                     {
