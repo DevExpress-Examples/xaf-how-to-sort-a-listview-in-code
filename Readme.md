@@ -12,58 +12,82 @@ This example sorts list view data by a class property and prevents users from mo
 
 ## Implementation Details
 
-1. Create a view controller in the application model and configure sorting settings for the list view's column:
+1. Create a view controller in the application model and configure sorting settings for the list view's columns and editor controls:
 
     _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
     ```cs
-    protected override void OnActivated() {
-        base.OnActivated();
+    public class SortListViewController : ObjectViewController<ListView, Issue> {
+        
         string propertyName = nameof(Issue.ModifiedOn);
         bool demoFlag = true;
-        // This code applies a client side sorting.
-        if(demoFlag) {
-            IModelColumn columnInfo = View.Model.Columns[propertyName];
-            if(columnInfo != null) {
-                columnInfo.SortIndex = 0;
-                columnInfo.SortOrder = ColumnSortOrder.Descending;
-            }
-        } else {
-            // This code is used for the server side sorting.
-            if(View.Model.Sorting[propertyName] == null) {
+        
+        protected override void OnActivated() 
+        {
+            base.OnActivated();
+            if (!demoFlag && View.Model.Sorting[propertyName] == null)
+            {
+                // This code applies a server side sorting.
                 IModelSortProperty sortProperty = View.Model.Sorting.AddNode<IModelSortProperty>(propertyName);
-                sortProperty.Direction = SortingDirection.Descending;
+                sortProperty.Direction = SortingDirection.Ascending;
                 sortProperty.PropertyName = propertyName;
             }
         }
-    }
-    ```
 
-2. Implement platform-dependent controllers that disable the sorting functionality in underlying grid controls:
-
-    _File to review:_ [BlazorSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortListViewController.cs) 
-    ```cs
-    protected override void OnViewControlsCreated() {
-        base.OnViewControlsCreated();
-        if(View.Editor is DxGridListEditor gridListEditor) {
-            foreach(DxGridDataColumnModel columnModel in gridListEditor.GridDataColumnModels) {
-                columnModel.AllowSort = false;
+        protected override void OnViewControlsCreated()
+        {
+            base.OnViewControlsCreated();
+            if (View.Editor is ColumnsListEditor listEditor)
+            {
+                foreach (var columnWrapper in listEditor.Columns)
+                {
+                    columnWrapper.AllowSortingChange = false;
+                    // This code applies a client side sorting.
+                    if (demoFlag && columnWrapper.PropertyName == propertyName)
+                    {
+                        columnWrapper.SortIndex = 0;
+                        columnWrapper.SortOrder = ColumnSortOrder.Descending;
+                    }
+                }
             }
-        }
-    }
-    ```
-
-    _File to review:_ [WinSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Win/Controllers/WinSortListViewController.cs) 
-
-    ```cs
-    protected override void OnViewControlsCreated() {
-        base.OnViewControlsCreated();
-        if(View.Editor is GridListEditor gridListEditor) {
-            gridListEditor.GridView.OptionsCustomization.AllowSort = false;
         }
     }
     ```
 
 This approach allows you to sort both nested and root list views, and works if server mode is enabled in the list view.
+
+## Approach using platform-dependent API:
+### Blazor: 
+
+    ```cs
+    protected override void OnViewControlsCreated()
+    {
+        base.OnViewControlsCreated();
+        if(View.Editor is DxGridListEditor gridListEditor)
+        {
+            foreach (DxGridColumnWrapper column in gridListEditor.Columns)
+            {
+                column.AllowSortingChange = false;
+            }
+        }
+    }
+    ```
+
+### Win: 
+
+    ```cs
+    protected override void OnViewControlsCreated()
+    {
+        base.OnViewControlsCreated();
+        if(View.Editor is GridListEditor gridListEditor && gridListEditor.GridView != null)
+        {
+            foreach(WinGridColumnWrapper columnWrapper in gridListEditor.Columns)
+            {
+                columnWrapper.Column.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+                columnWrapper.Column.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            }
+        }
+    }
+    ```
 
 ## Documentation 
 
@@ -74,8 +98,6 @@ This approach allows you to sort both nested and root list views, and works if s
 ## Files to Review
 
 - [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs)
-- [BlazorSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Blazor.Server/Controllers/BlazorSortListViewController.cs) 
-- [WinSortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Win/Controllers/WinSortListViewController.cs) 
 
 
 
