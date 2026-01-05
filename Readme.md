@@ -89,6 +89,22 @@ This approach allows you to sort both nested and root list views, and works if s
     }
     ```
 
+## Simplified Access to Column Settings for Grid List Editors
+
+You can write platform-agnostic code (see below) or access platform-specific column settings via ColumnWrapper descendants:
+
+    ```cs
+    protected override void OnViewControlsCreated() {
+        base.OnViewControlsCreated();
+        if (View.Editor is ColumnsListEditor listEditor) {
+            foreach (var column in listEditor.Columns) {
+                column.ShowInCustomizationForm = false;
+            }
+        }
+    }
+    ```
+
+
 ## Documentation 
 
 - [Application Model (UI Settings Storage)](https://docs.devexpress.com/eXpressAppFramework/112579/ui-construction/application-model-ui-settings-storage)
