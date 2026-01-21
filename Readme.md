@@ -16,7 +16,7 @@ Create a View Controller in the Module project and use the ColumnsListEditor API
 
 _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
 
-    ```cs
+```cs
     public class SortListViewController : ObjectViewController<ListView, Issue> {
         
         string propertyName = nameof(Issue.ModifiedOn);
@@ -52,12 +52,12 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
             }
         }
     }
-    ```
+```
 
 ## Approach using platform-dependent API:
 ### Blazor: 
 
-    ```cs
+```cs
     protected override void OnViewControlsCreated()
     {
         base.OnViewControlsCreated();
@@ -69,11 +69,11 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
             }
         }
     }
-    ```
+```
 
 ### Win: 
 
-    ```cs
+```cs
     protected override void OnViewControlsCreated()
     {
         base.OnViewControlsCreated();
@@ -86,7 +86,7 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
             }
         }
     }
-    ```
+```
 
 ## Documentation 
 
