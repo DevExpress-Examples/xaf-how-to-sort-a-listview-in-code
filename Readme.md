@@ -12,9 +12,10 @@ This example sorts list view data by a class property and prevents users from mo
 
 ## Implementation Details
 
-1. Create a view controller in the application model and configure sorting settings for the list view's columns and editor controls:
+Create a View Controller in the Module project and use the ColumnsListEditor API to configure sorting settings for the List View columns:
 
-    _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
+_File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
+
     ```cs
     public class SortListViewController : ObjectViewController<ListView, Issue> {
         
@@ -53,8 +54,6 @@ This example sorts list view data by a class property and prevents users from mo
     }
     ```
 
-This approach allows you to sort both nested and root list views, and works if server mode is enabled in the list view.
-
 ## Approach using platform-dependent API:
 ### Blazor: 
 
@@ -88,22 +87,6 @@ This approach allows you to sort both nested and root list views, and works if s
         }
     }
     ```
-
-## Simplified Access to Column Settings for Grid List Editors
-
-You can write platform-agnostic code (see below) or access platform-specific column settings via ColumnWrapper descendants:
-
-    ```cs
-    protected override void OnViewControlsCreated() {
-        base.OnViewControlsCreated();
-        if (View.Editor is ColumnsListEditor listEditor) {
-            foreach (var column in listEditor.Columns) {
-                column.ShowInCustomizationForm = false;
-            }
-        }
-    }
-    ```
-
 
 ## Documentation 
 
