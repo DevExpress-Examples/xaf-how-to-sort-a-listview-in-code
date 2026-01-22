@@ -2,8 +2,6 @@ name: vale-validation
 on:
   pull_request:
     paths:
-    - README.md
-    - readme.md
     - Readme.md
 
 jobs:
@@ -24,7 +22,7 @@ jobs:
       - name: vale linter check
         uses: DevExpress/vale-action@reviewdog
         with:
-          files: '["README.md", "readme.md", "Readme.md"]'
+          files: Readme.md
           fail_on_error: true
           filter_mode: nofilter
           reporter: github-check

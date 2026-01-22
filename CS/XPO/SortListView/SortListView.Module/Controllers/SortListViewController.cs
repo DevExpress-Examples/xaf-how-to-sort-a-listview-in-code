@@ -1,28 +1,42 @@
 using DevExpress.Data;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Xpo.DB;
 using SortListView.Module.BusinessObjects;
 
 namespace SortListView.Module {
-    public abstract class SortListViewControllerBase : ObjectViewController<ListView, Issue> {
-        protected override void OnActivated() {
+    public class SortListViewController : ObjectViewController<ListView, Issue> {
+        
+        string propertyName = nameof(Issue.ModifiedOn);
+        bool demoFlag = true;
+
+        protected override void OnActivated()
+        {
             base.OnActivated();
-            string propertyName = nameof(Issue.ModifiedOn);
-            bool demoFlag = true;
-            // This code applies a client side sorting.
-            if(demoFlag) {
-                IModelColumn columnInfo = View.Model.Columns[propertyName];
-                if(columnInfo != null) {
-                    columnInfo.SortIndex = 0;
-                    columnInfo.SortOrder = ColumnSortOrder.Descending;
-                }
-            } else {
-                // This code is used for the server side sorting.
-                if(View.Model.Sorting[propertyName] == null) {
-                    IModelSortProperty sortProperty = View.Model.Sorting.AddNode<IModelSortProperty>(propertyName);
-                    sortProperty.Direction = SortingDirection.Descending;
-                    sortProperty.PropertyName = propertyName;
+            if (!demoFlag && View.Model.Sorting[propertyName] == null)
+            {
+                // This code applies a server side sorting.
+                IModelSortProperty sortProperty = View.Model.Sorting.AddNode<IModelSortProperty>(propertyName);
+                sortProperty.Direction = SortingDirection.Ascending;
+                sortProperty.PropertyName = propertyName;
+            }
+        }
+
+        protected override void OnViewControlsCreated()
+        {
+            base.OnViewControlsCreated();
+            if (View.Editor is ColumnsListEditor listEditor)
+            {
+                foreach (var columnWrapper in listEditor.Columns)
+                {
+                    columnWrapper.AllowSortingChange = false;
+                    // This code applies a client side sorting.
+                    if (demoFlag && columnWrapper.PropertyName == propertyName)
+                    {
+                        columnWrapper.SortIndex = 0;
+                        columnWrapper.SortOrder = ColumnSortOrder.Descending;
+                    }
                 }
             }
         }
