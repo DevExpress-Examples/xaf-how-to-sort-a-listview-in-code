@@ -12,7 +12,7 @@ This example sorts list view data by a class property and prevents users from mo
 
 ## Implementation Details
 
-Create a View Controller in the Module project and use the ColumnsListEditor API to configure sorting settings for the List View columns:
+In the Module project, create a View Controller and use the `ColumnsListEditor` API to configure sort settings for the List View columns:
 
 _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
 
@@ -54,8 +54,8 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
     }
 ```
 
-## Approach using platform-dependent API:
-### Blazor: 
+##  Alternative Platform-Specific Approaches
+### ASP.NET Core Blazor
 
 ```cs
     protected override void OnViewControlsCreated()
@@ -71,7 +71,7 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
     }
 ```
 
-### Win: 
+### WinForms 
 
 ```cs
     protected override void OnViewControlsCreated()
@@ -107,3 +107,4 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
