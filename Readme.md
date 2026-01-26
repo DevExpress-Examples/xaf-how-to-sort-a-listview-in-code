@@ -4,15 +4,15 @@
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
 
-# XAF - How to sort a ListView in code
+# XAF - How to Sort a ListView in Code
 
-This example sorts list view data by a class property and prevents users from modifying the sorting settings.
+This example sorts list view data by class property and prevents users from modifying sorting settings.
 
 ![Data sorted by Modified On column value](blazor-sorted-grid.png)
 
 ## Implementation Details
 
-In the Module project, create a View Controller and use the `ColumnsListEditor` API to configure sort settings for the List View columns:
+In the Module project, create a View Controller and use the `ColumnsListEditor` API to configure sort settings for List View columns:
 
 _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListViewEF.Module/Controllers/SortListViewController.cs) 
 
@@ -101,7 +101,7 @@ _File to review:_ [SortListViewController.cs](CS/EFCore/SortListViewEF/SortListV
 
 
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements and Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=xaf-how-to-sort-a-listview-in-code&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=xaf-how-to-sort-a-listview-in-code&~~~was_helpful=no)
 
