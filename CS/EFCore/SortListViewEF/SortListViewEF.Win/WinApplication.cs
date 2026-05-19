@@ -18,7 +18,6 @@ public class SortListViewEFWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "SortListViewEF";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += SortListViewEFWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += SortListViewEFWindowsFormsApplication_CustomizeLanguagesList;
     }
