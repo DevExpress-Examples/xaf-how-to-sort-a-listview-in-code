@@ -18,8 +18,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="25.2.*" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="25.2.*" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="25.2.*-*" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="25.2.*-*" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SortListView.Module\SortListView.Module.csproj" />
